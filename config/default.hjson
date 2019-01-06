@@ -1,0 +1,10 @@
+{/* OpenDD main configuration */
+  redis: { /* Redis connection configuration */
+    url: redis://redis
+    port: 6379 
+    pass: '' 
+  }
+
+  /* Unique shared key for API auth */
+  uniquekey: aze456qsd789
+}
