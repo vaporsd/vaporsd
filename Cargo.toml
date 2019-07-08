@@ -11,8 +11,8 @@ license = "GPLv3"
 emojicons = "1.0.1"
 termion = "1.5"
 
-shiplift = "0.4"
-tokio = "0.1.13"
+shiplift = "0.5"
+tokio = "0.1.19"
 
 #actix-web = "0.6.9"
 #actix-web-httpauth = "0.0.4"

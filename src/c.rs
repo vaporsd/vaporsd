@@ -1,10 +1,10 @@
 use termion::color;
 
-pub fn head() {
+pub fn head(version: &'static str) {
 	println!(" _ _ ___ ___ ___ ___ ___");
 	println!("| | | .'| . | . |  _|_ -|   /\\");
 	println!(" \\_/|__,|  _|___|_| |___|  / ,\\");
-	println!("        |_|daemon          \\__/\n");
+	println!("        |_|                \\__/ v{}\n", version);
 }
 
 pub fn ok() -> String {

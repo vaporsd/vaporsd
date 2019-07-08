@@ -15,33 +15,51 @@
 //extern crate http;
 
 //mod api;
-//mod utils;
 /* Terminal and UX */
 #[macro_use] extern crate emojicons;
 extern crate termion;
 
 /* Docker connection */
 extern crate shiplift;
-use shiplift::Docker;
+use shiplift::{Docker, PullOptions};
 
 /* For shiplift use */
 extern crate tokio;
 use tokio::prelude::{Future, Stream};
 
 mod c;
+mod tree;
 
 fn main() {
-	c::head();
+	/* Display header */
+	c::head(tree::get().version);
 
+	/* Check if Docker is running */
 	print!("Checking `dockerd`... ");
 	let docker = Docker::new();
 	let fut = docker.version()
-		.map(|r| println!("{}({})", c::ok(), r.version))
+		.map(|r| println!("{} ({})", c::ok(), r.version))
 		.map_err(|e| {
-			println!("{}({})", c::ko(), e);
+			println!("{} ({})", c::ko(), e);
 			::std::process::exit(1)
 		});
 	tokio::run(fut);
+
+	/* Check for image updates */
+	for image in tree::get().images {
+		print!("  -> Checking image `{}`...", image.0);
+		let fut = docker
+			.images()
+			.search(image.1)
+			.map(|_| println!(" {} Up to date", c::ok()))
+			.map_err(|_| {
+				/* Update image */
+			}));
+		tokio::run(fut);
+	}
+
+
+
     /*
     let images = docker.images();
     let containers = docker.containers();
