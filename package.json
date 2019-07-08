@@ -1,0 +1,25 @@
+{
+  "name": "vaporsd",
+  "version": "1.0.0",
+  "description": "A full-featured web-service manager using docker with a RESTful API",
+  "main": "app.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vaporsd/vaporsd.git"
+  },
+  "keywords": [
+    "web",
+    "server",
+    "docker"
+  ],
+  "author": "Léon ROUX <leon@roox.space>",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/vaporsd/vaporsd/issues"
+  },
+  "homepage": "https://github.com/vaporsd/vaporsd#readme",
+  "dependencies": {
+    "dockerode": "^2.5.8"
+  }
+}
